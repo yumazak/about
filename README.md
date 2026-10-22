@@ -59,13 +59,12 @@ public/
 
 ## Deploy
 
-公開 URL: **https://yumazak.github.io/about/**
+公開 URL: **https://yumazak.dev/**
 
-`main` ブランチへの push で GitHub Pages にデプロイします（`.github/workflows/deploy.yml`）。
+Cloudflare Pages の `about` プロジェクト（GitHub `yumazak/about` 連携）で配信します。
 
-- 初回のみ GitHub の Settings → Pages → Source で **GitHub Actions** を選択
-- base path は `actions/configure-pages` の `base_path` から自動設定される
-- ローカルの `pnpm build` は base `/` で出力される
 - Build command: `pnpm build`
 - Output: `dist`
-- Node: `.node-version`（24.22.1）
+- Node: `.nvmrc` / `.node-version`（24.22.1）
+- カスタムドメイン: `yumazak.dev`
+- CLI: `cf pages list` / `cf pages deployments list --project-name about`
