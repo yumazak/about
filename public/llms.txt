@@ -1,0 +1,19 @@
+# Yuma Yamazaki (yumazak)
+
+> Engineering Manager / Software Engineer based in Kanto, Japan. Corporate engineering, BPR, data platform, and AI.
+
+## Profile
+
+- [Detailed profile (Markdown)](https://yumazak.github.io/about/ai.md)
+- [Portfolio](https://yumazak.github.io/about/)
+
+## Links
+
+- [GitHub](https://github.com/yumazak)
+- [X](https://x.com/yumazak)
+- [dev-null.sh](https://dev-null.sh/@yumazak)
+
+## Notes
+
+- The HTML portfolio is a summary.
+- `ai.md` is the detailed source of truth for AI agents.

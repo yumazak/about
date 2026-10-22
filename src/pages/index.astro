@@ -2,8 +2,10 @@
 import Base from "../layouts/Base.astro";
 import { career, skillGroups } from "../data/career";
 
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
 const askPrompt = encodeURIComponent(
-  "次のポートフォリオを読み、山崎悠雅（yumazak）の経歴・強み・現在の仕事を簡潔にまとめてください。 https://yumazak.github.io/about/",
+  "次のMarkdownを読み、山崎悠雅（yumazak）の経歴・強み・現在の仕事を簡潔にまとめてください。 https://yumazak.github.io/about/ai.md",
 );
 
 const askServices = [
@@ -102,6 +104,9 @@ const askServices = [
           <a href="https://dev-null.sh/@yumazak" target="_blank" rel="me noopener noreferrer">
             dev-null.sh
           </a>
+        </li>
+        <li>
+          <a href={`${base}ai.md`}>AI profile (Markdown)</a>
         </li>
       </ul>
     </section>
