@@ -139,8 +139,57 @@ strong {
   text-decoration: underline;
 }
 
-.ask {
-  margin-top: 1rem;
+.ai {
+  margin-top: 1.25rem;
+}
+
+.ai__label {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ai__actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 0.5rem;
+  max-width: 42rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ai__actions li {
+  margin: 0;
+}
+
+.ai__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.ai__button span:last-child {
+  color: var(--muted);
+}
+
+.ai__button:hover {
+  border-color: var(--fg);
+  text-decoration: none;
+}
+
+.ai__button:hover span:last-child {
+  color: var(--fg);
 }
 
 .experience {

@@ -3,6 +3,41 @@ import Base from "../layouts/Base.astro";
 import { career, skillGroups } from "../data/career";
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
+const about = [
+  "関東在住のエンジニアです。シンプルなモノ、効率化すること、クリエイティブなことが好きです。",
+  "HRテック企業の開発本部で、社内システム・データ基盤・AI を横断しています。Ruby on Rails / TypeScript / React のアプリケーション開発から、dbt・BigQuery のデータ基盤、Terraform・GitHub Actions のインフラ、LLM を活用した業務自動化まで、要件整理から運用定着まで一貫して担当しています。",
+  "現在もリードエンジニアとして開発を続けながら、採用・人事評価・メンター・チーム運営にも従事しています。",
+];
+
+const aiProfile = [
+  "山崎悠雅（Yuma Yamazaki / yumazak）のプロフィールです。以下の情報を踏まえて質問に答えてください。",
+  "",
+  "## About",
+  about.join("\n\n"),
+  "",
+  "## Experience",
+  ...career.map((item) => `- ${item.period}: ${item.title}${item.role ? ` — ${item.role}` : ""}`),
+  "",
+  "## Skills",
+  ...skillGroups.map((group) => `- ${group.label}: ${group.items.join(", ")}`),
+  "",
+  "## Links",
+  "- GitHub: https://github.com/yumazak",
+  "- X: https://x.com/yumazak",
+  "- dev-null.sh: https://dev-null.sh/@yumazak",
+  "- 詳細: https://yumazak.github.io/about/ai.md",
+].join("\n");
+
+const aiPrompt = encodeURIComponent(aiProfile);
+
+const aiServices = [
+  { name: "ChatGPT", url: `https://chatgpt.com/?q=${aiPrompt}` },
+  { name: "Claude", url: `https://claude.ai/new?q=${aiPrompt}` },
+  { name: "Gemini", url: `https://www.google.com/search?udm=50&q=${aiPrompt}` },
+  { name: "Perplexity", url: `https://www.perplexity.ai/search?q=${aiPrompt}` },
+  { name: "Grok", url: `https://grok.com/?q=${aiPrompt}` },
+];
 ---
 
 <Base>
@@ -15,39 +50,27 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
       <a href="#skills">Skills</a>
       <a href="#links">Links</a>
     </nav>
-    <div class="ask">
-      <ask-ai-badge
-        product-name="Yuma Yamazaki"
-        product-url="https://yumazak.github.io/about/"
-        title="Ask AI"
-        locale="en"
-        layout="wrap"
-        size="sm"
-        align="start"
-        title-align="start"
-        theme="auto"
-        show-labels
-        show-border
-        prompt="次のMarkdownを読み、山崎悠雅（yumazak）の経歴・強み・現在の仕事を簡潔にまとめてください。 https://yumazak.github.io/about/ai.md"
-      ></ask-ai-badge>
+    <div class="ai">
+      <p class="ai__label">Ask AI</p>
+      <ul class="ai__actions">
+        {aiServices.map((service) => (
+          <li>
+            <a class="ai__button" href={service.url} target="_blank" rel="noopener noreferrer">
+              <span>{service.name}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </header>
 
   <main>
     <section id="about">
       <h2>About</h2>
-      <p>
-        関東在住のエンジニアです。シンプルなモノ、効率化すること、クリエイティブなことが好きです。
-      </p>
-      <p>
-        HRテック企業の開発本部で、社内システム・データ基盤・AI を横断しています。Ruby on Rails /
-        TypeScript / React のアプリケーション開発から、dbt・BigQuery のデータ基盤、Terraform・GitHub
-        Actions のインフラ、LLM
-        を活用した業務自動化まで、要件整理から運用定着まで一貫して担当しています。
-      </p>
-      <p>
-        現在もリードエンジニアとして開発を続けながら、採用・人事評価・メンター・チーム運営にも従事しています。
-      </p>
+      {about.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
     </section>
 
     <section id="experience">
@@ -102,7 +125,3 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     </section>
   </main>
 </Base>
-
-<script>
-  import "ask-ai-badge/element";
-</script>

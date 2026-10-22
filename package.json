@@ -14,7 +14,6 @@
     "format:check": "oxfmt --check"
   },
   "dependencies": {
-    "ask-ai-badge": "^1.1.11",
     "astro": "^7.4.2"
   },
   "devDependencies": {
