@@ -1,6 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
 import { career, skillGroups } from "../data/career";
+
+const askPrompt = encodeURIComponent(
+  "次のポートフォリオを読み、山崎悠雅（yumazak）の経歴・強み・現在の仕事を簡潔にまとめてください。 https://yumazak.github.io/about/",
+);
+
+const askServices = [
+  { name: "ChatGPT", url: `https://chatgpt.com/?q=${askPrompt}` },
+  { name: "Claude", url: `https://claude.ai/new?q=${askPrompt}` },
+  { name: "Gemini", url: `https://gemini.google.com/app?q=${askPrompt}` },
+  { name: "Perplexity", url: `https://www.perplexity.ai/search?q=${askPrompt}` },
+];
 ---
 
 <Base>
@@ -13,6 +24,21 @@ import { career, skillGroups } from "../data/career";
       <a href="#skills">Skills</a>
       <a href="#links">Links</a>
     </nav>
+    <p class="ask">
+      <span class="ask__label">Ask AI:</span>
+      {askServices.map((service, index) => (
+        <>
+          {index > 0 && (
+            <span class="ask__sep" aria-hidden="true">
+              ·
+            </span>
+          )}
+          <a href={service.url} target="_blank" rel="noopener noreferrer">
+            {service.name}
+          </a>
+        </>
+      ))}
+    </p>
   </header>
 
   <main>

@@ -139,6 +139,32 @@ strong {
   text-decoration: underline;
 }
 
+.ask {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+}
+
+.ask__label {
+  color: var(--muted);
+}
+
+.ask a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.ask a:hover {
+  text-decoration: underline;
+}
+
+.ask__sep {
+  color: var(--muted);
+}
+
 .experience {
   list-style: none;
   margin: 0;
