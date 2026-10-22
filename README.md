@@ -34,27 +34,26 @@ Node のバージョンは `.node-version`（24.22.1）に合わせてくださ�
 
 ```text
 src/
-  data/career.ts    # 職歴・スキル
   layouts/          # 共通レイアウト
-  pages/index.astro # すべてのセクションを1ページに集約
+  pages/index.astro # 名前・Ask AI ドロップダウン・Links
   styles/global.css # 最小限のタイポグラフィ
 public/
-  ai.md             # AI 向けの詳細プロフィール
+  about.md        # AI 向けの詳細プロフィール
   llms.txt          # llms.txt 形式の入口
                       # favicon など
 ```
 
 ## AI
 
-- `public/ai.md` が AI エージェント向けの詳細プロフィール（HTML ページは要約）
-- `public/llms.txt` から `ai.md` を参照
-- ヘッダーの Ask AI は `ai.md` を読むプロンプトで各サービスを開く
-- `<link rel="alternate" type="text/markdown">` でも `ai.md` を公開
+- `public/about.md` が AI エージェント向けの詳細プロフィール（HTML ページは名前とリンクのみ）
+- `public/llms.txt` から `about.md` を参照
+- Ask AI は GitHub の raw URL（`raw.githubusercontent.com/.../about.md`）を読むプロンプトで各サービスを開く
+- `<link rel="alternate" type="text/markdown">` でも raw URL を公開
 
 ## Content
 
-- 職歴・スキルを更新する: `src/data/career.ts`
-- AI 向けの詳細情報を更新する: `public/ai.md`
+- AI 向けの詳細情報を更新する: `public/about.md`
+- トップページの表示を更新する: `src/pages/index.astro`
 
 職歴の詳細は private リポジトリの `assistant` を正とし、公開可能な範囲だけをこのリポジトリに反映する。
 

@@ -1,40 +1,15 @@
 ---
 import Base from "../layouts/Base.astro";
-import { career, skillGroups } from "../data/career";
 import claudeIcon from "@lobehub/icons-static-svg/icons/claude.svg?raw";
 import geminiIcon from "@lobehub/icons-static-svg/icons/gemini.svg?raw";
+import githubIcon from "@lobehub/icons-static-svg/icons/github.svg?raw";
 import grokIcon from "@lobehub/icons-static-svg/icons/grok.svg?raw";
 import openaiIcon from "@lobehub/icons-static-svg/icons/openai.svg?raw";
 import perplexityIcon from "@lobehub/icons-static-svg/icons/perplexity.svg?raw";
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
-
-const about = [
-  "関東在住のエンジニアです。シンプルなモノ、効率化すること、クリエイティブなことが好きです。",
-  "HRテック企業の開発本部で、社内システム・データ基盤・AI を横断しています。Ruby on Rails / TypeScript / React のアプリケーション開発から、dbt・BigQuery のデータ基盤、Terraform・GitHub Actions のインフラ、LLM を活用した業務自動化まで、要件整理から運用定着まで一貫して担当しています。",
-  "現在もリードエンジニアとして開発を続けながら、採用・人事評価・メンター・チーム運営にも従事しています。",
-];
-
-const aiProfile = [
-  "山崎悠雅（Yuma Yamazaki / yumazak）のプロフィールです。以下の情報を踏まえて質問に答えてください。",
-  "",
-  "## About",
-  about.join("\n\n"),
-  "",
-  "## Experience",
-  ...career.map((item) => `- ${item.period}: ${item.title}${item.role ? ` — ${item.role}` : ""}`),
-  "",
-  "## Skills",
-  ...skillGroups.map((group) => `- ${group.label}: ${group.items.join(", ")}`),
-  "",
-  "## Links",
-  "- GitHub: https://github.com/yumazak",
-  "- X: https://x.com/yumazak",
-  "- dev-null.sh: https://dev-null.sh/@yumazak",
-  "- 詳細: https://yumazak.github.io/about/ai.md",
-].join("\n");
-
-const aiPrompt = encodeURIComponent(aiProfile);
+const aiPrompt = encodeURIComponent(
+  "山崎悠雅（Yuma Yamazaki / yumazak）について、教えてください。\n\nhttps://raw.githubusercontent.com/yumazak/about/main/public/about.md",
+);
 
 const aiServices = [
   { name: "ChatGPT", icon: openaiIcon, url: `https://chatgpt.com/?q=${aiPrompt}` },
@@ -47,98 +22,74 @@ const aiServices = [
   },
   { name: "Grok", icon: grokIcon, url: `https://grok.com/?q=${aiPrompt}` },
 ];
+
+const xIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>`;
 ---
 
 <Base>
-  <header class="site-header">
-    <h1>Yuma Yamazaki</h1>
-    <p class="lead">Engineering Manager @ PLEX / Software Engineer</p>
-    <nav aria-label="目次">
-      <a href="#ask">Ask AI</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#links">Links</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="ask" class="ask-panel" aria-labelledby="ask-title">
-      <div class="ask-panel__head">
-        <h2 id="ask-title">Ask AI about me</h2>
-        <p>About / Experience / Skills をまとめたプロンプトで、各AIに質問できます。</p>
-      </div>
-      <ul class="ai__actions">
-        {aiServices.map((service) => (
+  <main class="hero">
+    <header class="intro">
+      <h1>Yuma Yamazaki</h1>
+      <div class="intro__meta">
+        <p class="lead">Software Engineer</p>
+        <ul class="links" aria-label="Links">
           <li>
-            <a class="ai__button" href={service.url} target="_blank" rel="noopener noreferrer">
-              <span class="ai__icon" aria-hidden="true" set:html={service.icon} />
-              <span class="ai__name">{service.name}</span>
-              <span class="ai__arrow" aria-hidden="true">
-                ↗
-              </span>
+            <a
+              href="https://github.com/yumazak"
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+            >
+              <span aria-hidden="true" set:html={githubIcon} />
             </a>
           </li>
-        ))}
-      </ul>
-      <p class="ask-panel__note">
-        <a href={`${base}ai.md`}>詳細プロフィール（ai.md）</a>
-      </p>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      {about.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <ol class="experience">
-        {career.map((item) => (
           <li>
-            <span class="period">{item.period}</span>
-            <div>
-              <strong>{item.title}</strong>
-              {item.role && <div class="role">{item.role}</div>}
-            </div>
+            <a
+              href="https://x.com/yumazak"
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label="X"
+              title="X"
+            >
+              <span aria-hidden="true" set:html={xIcon} />
+            </a>
           </li>
-        ))}
-      </ol>
-    </section>
+        </ul>
+      </div>
+    </header>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <dl class="skills">
-        {skillGroups.map((group) => (
-          <>
-            <dt>{group.label}</dt>
-            <dd>{group.items.join(", ")}</dd>
-          </>
-        ))}
-      </dl>
-    </section>
-
-    <section id="links">
-      <h2>Links</h2>
-      <ul class="links">
-        <li>
-          <a href="https://github.com/yumazak" target="_blank" rel="me noopener noreferrer">
-            GitHub
-          </a>
-        </li>
-        <li>
-          <a href="https://x.com/yumazak" target="_blank" rel="me noopener noreferrer">
-            X
-          </a>
-        </li>
-        <li>
-          <a href="https://dev-null.sh/@yumazak" target="_blank" rel="me noopener noreferrer">
-            dev-null.sh
-          </a>
-        </li>
-      </ul>
+    <section class="ask" aria-label="Ask AI">
+      <details class="ai-menu">
+        <summary>
+          <span class="ai-menu__label">
+            <svg
+              class="ai-menu__spark"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              aria-hidden="true"
+            >
+              <path d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 8.279 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"></path>
+            </svg>
+            Ask AI about me
+          </span>
+        </summary>
+        <ul class="ai-menu__list">
+          {aiServices.map((service) => (
+            <li>
+              <a href={service.url} target="_blank" rel="noopener noreferrer">
+                <span class="ai-menu__icon" aria-hidden="true" set:html={service.icon} />
+                <span>{service.name}</span>
+                <span class="ai-menu__arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
     </section>
   </main>
 </Base>

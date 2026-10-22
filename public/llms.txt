@@ -4,7 +4,7 @@
 
 ## Profile
 
-- [Detailed profile (Markdown)](https://yumazak.github.io/about/ai.md)
+- [Detailed profile (Markdown)](https://raw.githubusercontent.com/yumazak/about/main/public/about.md)
 - [Portfolio](https://yumazak.github.io/about/)
 
 ## Links
@@ -16,4 +16,4 @@
 ## Notes
 
 - The HTML portfolio is a summary.
-- `ai.md` is the detailed source of truth for AI agents.
+- `about.md` is the detailed source of truth for AI agents.
