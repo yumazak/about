@@ -1,0 +1,30 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build
+dist
+.astro
+
+# testing
+coverage
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# deploy
+.vercel
+.wrangler
+
+# typescript
+*.tsbuildinfo

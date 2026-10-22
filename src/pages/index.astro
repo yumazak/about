@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import { career, skillGroups } from "../data/career";
+---
+
+<Base>
+  <header class="site-header">
+    <h1>Yuma Yamazaki</h1>
+    <p class="lead">Engineering Manager @ PLEX / Software Engineer</p>
+    <nav aria-label="目次">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#links">Links</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        関東在住のエンジニアです。シンプルなモノ、効率化すること、クリエイティブなことが好きです。
+      </p>
+      <p>
+        HRテック企業の開発本部で、社内システム・データ基盤・AI を横断しています。Ruby on Rails /
+        TypeScript / React のアプリケーション開発から、dbt・BigQuery のデータ基盤、Terraform・GitHub
+        Actions のインフラ、LLM
+        を活用した業務自動化まで、要件整理から運用定着まで一貫して担当しています。
+      </p>
+      <p>
+        現在もリードエンジニアとして開発を続けながら、採用・人事評価・メンター・チーム運営にも従事しています。
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ol class="experience">
+        {career.map((item) => (
+          <li>
+            <span class="period">{item.period}</span>
+            <div>
+              <strong>{item.title}</strong>
+              {item.role && <div class="role">{item.role}</div>}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        {skillGroups.map((group) => (
+          <>
+            <dt>{group.label}</dt>
+            <dd>{group.items.join(", ")}</dd>
+          </>
+        ))}
+      </dl>
+    </section>
+
+    <section id="links">
+      <h2>Links</h2>
+      <ul class="links">
+        <li>
+          <a href="https://github.com/yumazak" target="_blank" rel="me noopener noreferrer">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/yumazak" target="_blank" rel="me noopener noreferrer">
+            X
+          </a>
+        </li>
+        <li>
+          <a href="https://dev-null.sh/@yumazak" target="_blank" rel="me noopener noreferrer">
+            dev-null.sh
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Base>
