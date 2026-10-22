@@ -166,6 +166,9 @@ importers:
 
   .:
     dependencies:
+      ask-ai-badge:
+        specifier: ^1.1.11
+        version: 1.1.11
       astro:
         specifier: ^7.4.2
         version: 7.4.2(yaml@2.9.1)
@@ -1071,6 +1074,17 @@ packages:
   aria-query@5.3.2:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
     engines: {node: '>= 0.4'}
+
+  ask-ai-badge@1.1.11:
+    resolution: {integrity: sha512-AIPixPA2xv3Idz+uWw4nEtJ8hRd47cUEYC4qrAa5Pl6MX/a8pYoV3M9JS3fDzeLGlsGqRPgy/h9hi6dZQdkVQQ==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   astro@7.4.2:
     resolution: {integrity: sha512-FAH4cdDlFaVnQGjazLTEIC5vJqGlo5XANc1wIbzQHIqAjJTll/RWTUs+SPNW1JdezG4YGxMZllaE5A41T2kzhA==}
@@ -2693,6 +2707,8 @@ snapshots:
       picomatch: 2.3.2
 
   aria-query@5.3.2: {}
+
+  ask-ai-badge@1.1.11: {}
 
   astro@7.4.2(yaml@2.9.1):
     dependencies:
