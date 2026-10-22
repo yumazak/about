@@ -173,6 +173,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.12
         version: 0.9.12(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
+      '@lobehub/icons-static-svg':
+        specifier: ^1.97.0
+        version: 1.97.0
       oxfmt:
         specifier: ^0.74.0
         version: 0.74.0(@astrojs/compiler-rs@0.5.2)
@@ -576,6 +579,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.6.0':
     resolution: {integrity: sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==}
+
+  '@lobehub/icons-static-svg@1.97.0':
+    resolution: {integrity: sha512-EM8deino3+gTmyXvuGqkIA89a/BJD95n9Mtp9ISJa5I+RQdq9hQ+hUpnRyRI0WiLlLADun3MEgGcMfFpYp0Eyg==}
 
   '@napi-rs/wasm-runtime@1.2.4':
     resolution: {integrity: sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==}
@@ -2356,6 +2362,8 @@ snapshots:
     optional: true
 
   '@jridgewell/sourcemap-codec@1.6.0': {}
+
+  '@lobehub/icons-static-svg@1.97.0': {}
 
   '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:

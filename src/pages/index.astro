@@ -1,6 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
 import { career, skillGroups } from "../data/career";
+import claudeIcon from "@lobehub/icons-static-svg/icons/claude.svg?raw";
+import geminiIcon from "@lobehub/icons-static-svg/icons/gemini.svg?raw";
+import grokIcon from "@lobehub/icons-static-svg/icons/grok.svg?raw";
+import openaiIcon from "@lobehub/icons-static-svg/icons/openai.svg?raw";
+import perplexityIcon from "@lobehub/icons-static-svg/icons/perplexity.svg?raw";
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
@@ -32,11 +37,15 @@ const aiProfile = [
 const aiPrompt = encodeURIComponent(aiProfile);
 
 const aiServices = [
-  { name: "ChatGPT", url: `https://chatgpt.com/?q=${aiPrompt}` },
-  { name: "Claude", url: `https://claude.ai/new?q=${aiPrompt}` },
-  { name: "Gemini", url: `https://www.google.com/search?udm=50&q=${aiPrompt}` },
-  { name: "Perplexity", url: `https://www.perplexity.ai/search?q=${aiPrompt}` },
-  { name: "Grok", url: `https://grok.com/?q=${aiPrompt}` },
+  { name: "ChatGPT", icon: openaiIcon, url: `https://chatgpt.com/?q=${aiPrompt}` },
+  { name: "Claude", icon: claudeIcon, url: `https://claude.ai/new?q=${aiPrompt}` },
+  { name: "Gemini", icon: geminiIcon, url: `https://www.google.com/search?udm=50&q=${aiPrompt}` },
+  {
+    name: "Perplexity",
+    icon: perplexityIcon,
+    url: `https://www.perplexity.ai/search?q=${aiPrompt}`,
+  },
+  { name: "Grok", icon: grokIcon, url: `https://grok.com/?q=${aiPrompt}` },
 ];
 ---
 
@@ -45,27 +54,38 @@ const aiServices = [
     <h1>Yuma Yamazaki</h1>
     <p class="lead">Engineering Manager @ PLEX / Software Engineer</p>
     <nav aria-label="目次">
+      <a href="#ask">Ask AI</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#links">Links</a>
     </nav>
-    <div class="ai">
-      <p class="ai__label">Ask AI</p>
+  </header>
+
+  <main>
+    <section id="ask" class="ask-panel" aria-labelledby="ask-title">
+      <div class="ask-panel__head">
+        <h2 id="ask-title">Ask AI about me</h2>
+        <p>About / Experience / Skills をまとめたプロンプトで、各AIに質問できます。</p>
+      </div>
       <ul class="ai__actions">
         {aiServices.map((service) => (
           <li>
             <a class="ai__button" href={service.url} target="_blank" rel="noopener noreferrer">
-              <span>{service.name}</span>
-              <span aria-hidden="true">↗</span>
+              <span class="ai__icon" aria-hidden="true" set:html={service.icon} />
+              <span class="ai__name">{service.name}</span>
+              <span class="ai__arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
           </li>
         ))}
       </ul>
-    </div>
-  </header>
+      <p class="ask-panel__note">
+        <a href={`${base}ai.md`}>詳細プロフィール（ai.md）</a>
+      </p>
+    </section>
 
-  <main>
     <section id="about">
       <h2>About</h2>
       {about.map((paragraph) => (
@@ -117,9 +137,6 @@ const aiServices = [
           <a href="https://dev-null.sh/@yumazak" target="_blank" rel="me noopener noreferrer">
             dev-null.sh
           </a>
-        </li>
-        <li>
-          <a href={`${base}ai.md`}>AI profile (Markdown)</a>
         </li>
       </ul>
     </section>
