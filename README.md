@@ -47,8 +47,9 @@ public/
 
 - `public/about.md` が AI エージェント向けの詳細プロフィール（HTML ページは名前とリンクのみ）
 - `public/llms.txt` から `about.md` を参照
-- Ask AI は GitHub の raw URL（`raw.githubusercontent.com/.../about.md`）を読むプロンプトで各サービスを開く
-- `<link rel="alternate" type="text/markdown">` でも raw URL を公開
+- Ask AI は `https://yumazak.dev/about.md` を読むプロンプトで各サービスを開く
+- `<link rel="alternate" type="text/plain">` でも about.md を公開
+- Cloudflare Pages の `_headers` で about.md を `text/plain` 配信
 
 ## Content
 
