@@ -65,6 +65,6 @@ Cloudflare Pages の `about` プロジェクト（GitHub `yumazak/about` 連携�
 
 - Build command: `pnpm build`
 - Output: `dist`
-- Node: `.nvmrc` / `.node-version`（24.22.1）
+- Node: `.node-version`（24.22.1）
 - カスタムドメイン: `yumazak.dev`
 - CLI: `cf pages list` / `cf pages deployments list --project-name about`
