@@ -5,7 +5,7 @@
 ## Profile
 
 - [Detailed profile (Markdown)](https://raw.githubusercontent.com/yumazak/about/main/public/about.md)
-- [Portfolio](https://yumazak.github.io/about/)
+- [Portfolio](https://yumazak.dev/)
 
 ## Links
 

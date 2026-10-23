@@ -7,7 +7,7 @@
 - GitHub: https://github.com/yumazak
 - X: https://x.com/yumazak
 - dev-null.sh: https://dev-null.sh/@yumazak
-- ポートフォリオ: https://yumazak.github.io/about/
+- ポートフォリオ: https://yumazak.dev/
 
 ## 概要
 
