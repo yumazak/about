@@ -1,27 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
-import claudeIcon from "@lobehub/icons-static-svg/icons/claude.svg?raw";
-import geminiIcon from "@lobehub/icons-static-svg/icons/gemini.svg?raw";
+import { AskAiMenu } from "../components/AskAiMenu";
 import githubIcon from "@lobehub/icons-static-svg/icons/github.svg?raw";
-import grokIcon from "@lobehub/icons-static-svg/icons/grok.svg?raw";
-import openaiIcon from "@lobehub/icons-static-svg/icons/openai.svg?raw";
-import perplexityIcon from "@lobehub/icons-static-svg/icons/perplexity.svg?raw";
-
-const aiPrompt = encodeURIComponent(
-  "山崎悠雅（Yuma Yamazaki / yumazak）について、教えてください。\n\nhttps://yumazak.dev/about.md",
-);
-
-const aiServices = [
-  { name: "ChatGPT", icon: openaiIcon, url: `https://chatgpt.com/?q=${aiPrompt}` },
-  { name: "Claude", icon: claudeIcon, url: `https://claude.ai/new?q=${aiPrompt}` },
-  { name: "Gemini", icon: geminiIcon, url: `https://www.google.com/search?udm=50&q=${aiPrompt}` },
-  {
-    name: "Perplexity",
-    icon: perplexityIcon,
-    url: `https://www.perplexity.ai/search?q=${aiPrompt}`,
-  },
-  { name: "Grok", icon: grokIcon, url: `https://grok.com/?q=${aiPrompt}` },
-];
 
 const xIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>`;
 ---
@@ -60,36 +40,7 @@ const xIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><
     </header>
 
     <section class="ask" aria-label="Ask AI">
-      <details class="ai-menu">
-        <summary>
-          <span class="ai-menu__label">
-            <svg
-              class="ai-menu__spark"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              aria-hidden="true"
-            >
-              <path d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 8.279 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"></path>
-            </svg>
-            Ask AI about me
-          </span>
-        </summary>
-        <ul class="ai-menu__list">
-          {aiServices.map((service) => (
-            <li>
-              <a href={service.url} target="_blank" rel="noopener noreferrer">
-                <span class="ai-menu__icon" aria-hidden="true" set:html={service.icon} />
-                <span>{service.name}</span>
-                <span class="ai-menu__arrow" aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
+      <AskAiMenu client:load />
     </section>
   </main>
 </Base>

@@ -5,6 +5,7 @@
 ## Stack
 
 - [Astro](https://astro.build/) — 静的サイト生成
+- [React](https://react.dev/) — Ask AI ドロップダウン
 - TypeScript
 - pnpm / oxlint / oxfmt
 
@@ -34,9 +35,10 @@ Node のバージョンは `.node-version`（24.22.1）に合わせてくださ�
 
 ```text
 src/
-  layouts/          # 共通レイアウト
+  components/     # Ask AI ドロップダウン (React)
+  layouts/        # 共通レイアウト
   pages/index.astro # 名前・Ask AI ドロップダウン・Links
-  styles/global.css # 最小限のタイポグラフィ
+  styles/global.css # ページと dropdown のスタイル
 public/
   about.md        # AI 向けの詳細プロフィール
   llms.txt          # llms.txt 形式の入口
