@@ -8,6 +8,7 @@
 - [React](https://react.dev/) — Ask AI ドロップダウン
 - TypeScript
 - pnpm / oxlint / oxfmt
+- [lefthook](https://lefthook.dev/) — Git hooks
 
 ## Setup
 
@@ -30,6 +31,17 @@ Node のバージョンは `.node-version`（24.22.1）に合わせてくださ�
 | `pnpm lint:fix`     | oxlint で自動修正               |
 | `pnpm format`       | oxfmt で整形                    |
 | `pnpm format:check` | 整形差分を確認                  |
+
+## Hooks
+
+`pnpm install` で lefthook の Git hooks が入ります。手動で入れ直す場合:
+
+```bash
+pnpm exec lefthook install
+```
+
+- pre-commit: `oxlint` / `oxfmt --check`
+- pre-push: `pnpm outdated`（更新があっても push は継続）/ `pnpm audit`（脆弱性があれば push を停止）
 
 ## Structure
 

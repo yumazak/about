@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      run: pnpm lint
+    - name: format
+      run: pnpm format:check
+
+pre-push:
+  jobs:
+    - name: outdated
+      run: pnpm outdated || true
+    - name: audit
+      run: pnpm audit
